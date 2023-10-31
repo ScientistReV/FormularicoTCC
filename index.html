@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Submissão - TCC IFG</title>
+    <!-- Bootstrap 4 CDN -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container mt-4">
+
+        <form id="tccForm">
+
+            <!-- Identificação da Produção -->
+            <h2>IDENTIFICAÇÃO DA PRODUÇÃO TÉCNICO-CIENTÍFICA</h2>
+            <div id="identificacoes">
+                <div class="identificacao">
+                    <div class="form-group">
+                        <label for="tipoDocumento">Tipo de Documento:</label>
+                        <select id="tipoDocumento" class="form-control" required>
+                            <option value="tcc">TCC</option>
+                            <option value="monografia">Monografia de Especialização</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="titulo">Título:</label>
+                        <input type="text" class="form-control" id="titulo" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tituloAlternativo">Título alternativo:</label>
+                        <input type="text" class="form-control" id="tituloAlternativo" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Permissão de acesso ao documento:</label><br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" id="acessoAberto" name="permissaoAcesso" value="acessoAberto" required>
+                            <label class="form-check-label" for="acessoAberto">Acesso aberto</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" id="acessoRestrito" name="permissaoAcesso" value="acessoRestrito" required>
+                            <label class="form-check-label" for="acessoRestrito">Acesso restrito</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" id="embargo" name="permissaoAcesso" value="embargo" required>
+                            <label class="form-check-label" for="embargo">Embargo</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Motivo do acesso restrito:</label><br>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="registroPatente" name="motivoRestrito" value="registroPatente">
+                            <label class="form-check-label" for="registroPatente">O documento está sujeito a registro de patente.</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="publicacaoLivro" name="motivoRestrito" value="publicacaoLivro">
+                            <label class="form-check-label" for="publicacaoLivro">O documento pode vir a ser publicado como livro, capítulo de livro ou artigo.</label>
+                        </div>
+                        <input type="text" id="outraJustificativa" name="outraJustificativa" class="form-control mt-2" placeholder="Outra justificativa">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dataDisponibilizacao">Data para disponibilização no ReDI:</label>
+                        <input type="date" id="dataDisponibilizacao" name="dataDisponibilizacao" class="form-control" required>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="dataDefesa">Data da defesa:</label>
+                        <input type="date" id="dataDefesa" name="dataDefesa" class="form-control" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Autores -->
+            <h2>AUTOR(ES)</h2>
+            <div id="autores">
+                <!-- Primeiro Autor -->
+                <div class="autor">
+                    <div class="form-group">
+                        <label for="primeiroNome1">Primeiro Nome:</label>
+                        <input type="text" class="form-control" id="primeiroNome1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ultimoNome1">Último Nome:</label>
+                        <input type="text" class="form-control" id="ultimoNome1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lattesUrl1">URL do Currículo Lattes:</label>
+                        <input type="url" class="form-control" id="lattesUrl1" required>
+                    </div>
+                </div>
+                <!-- Espaço para adicionar outros autores -->
+            </div>
+            <button type="button" id="addAuthorBtn" class="btn btn-primary mb-3">Adicionar Autor</button>
+
+            <!-- Orientador -->
+            <h2>ORIENTADOR</h2>
+            <div class="form-group">
+                <label for="nomeOrientadorPrimeiro">Primeiro Nome:</label>
+                <input type="text" class="form-control" id="nomeOrientadorPrimeiro" required>
+            </div>
+
+            <div class="form-group">
+                <label for="nomeOrientadorUltimo">Último Nome:</label>
+                <input type="text" class="form-control" id="nomeOrientadorUltimo" required>
+            </div>
+
+            <div class="form-group">
+                <label for="lattesOrientador">URL do Currículo Lattes:</label>
+                <input type="url" class="form-control" id="lattesOrientador" required>
+            </div>
+
+            <!-- Co-Orientador -->
+            <h2>CO-ORIENTADOR (OPCIONAL)</h2>
+            <div id="coorientadores">
+                <div class="coorientador">
+                    <div class="form-group">
+                        <label for="nomeCoOrientadorPrimeiro">Primeiro Nome:</label>
+                        <input type="text" class="form-control" id="nomeCoOrientadorPrimeiro">
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="nomeCoOrientadorUltimo">Último Nome:</label>
+                        <input type="text" class="form-control" id="nomeCoOrientadorUltimo">
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="lattesCoOrientador">URL do Currículo Lattes:</label>
+                        <input type="url" class="form-control" id="lattesCoOrientador">
+                    </div>
+                </div>
+            </div>
+            <button type="button" id="addCoorientadorBtn" class="btn btn-primary mb-3">Adicionar co-orientador</button>
+
+            <!-- Membros da Banca -->
+            <h2>MEMBROS DA BANCA</h2>
+            <div id="bancaMembros">
+                <div class="membro">
+                    <div class="form-group">
+                        <label for="nomeMembroPrimeiro">Primeiro Nomer:</label>
+                        <input type="text" class="form-control" id="nomeMembroPrimeiro" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nomeMembroUltimo">Último Nome:</label>
+                        <input type="text" class="form-control" id="nomeMembroUltimo" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lattesMembro1">URL do Currículo Lattes:</label>
+                        <input type="url" class="form-control" id="lattesMembro1" required>
+                    </div>
+                </div>
+            </div>
+            <button type="button" id="addMembroBtn" class="btn btn-primary mb-3">Adicionar Membro</button>
+
+            <!-- Descrição do Trabalho -->
+            <h2>DESCRIÇÃO DO TRABALHO</h2>
+            <div class="form-group">
+                <label for="palavrasChave">Palavras-Chave:</label>
+                <input type="text" class="form-control" id="palavrasChave" required>
+            </div>
+
+            <div class="form-group">
+                <label for="resumo">Resumo:</label>
+                <textarea class="form-control" id="resumo" required></textarea>
+            </div>
+
+            <!-- Botão de envio -->
+            <input type="submit" class="btn btn-success" value="Enviar">
+
+        </form>
+
+    </div>
+
+    <script>
+        // Função para adicionar novos autores
+        document.getElementById('addAuthorBtn').addEventListener('click', () => {
+            let newAuthorDiv = document.createElement('div');
+            newAuthorDiv.innerHTML = `
+                <div class="autor">
+                    <div class="form-group">
+                        <label>Primeiro Nome:</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Último Nome:</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>URL do Currículo Lattes:</label>
+                        <input type="url" class="form-control" required>
+                    </div>
+                </div>
+            `;
+            document.getElementById('autores').appendChild(newAuthorDiv);
+        });
+
+        // Função para adicionar novos membros da banca
+        document.getElementById('addMembroBtn').addEventListener('click', () => {
+            let newMembroDiv = document.createElement('div');
+            newMembroDiv.innerHTML = `
+                <div class="membro">
+                    <div class="form-group">
+                        <label>Nome do Membro:</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>URL do Currículo Lattes:</label>
+                        <input type="url" class="form-control" required>
+                    </div>
+                </div>
+            `;
+            document.getElementById('bancaMembros').appendChild(newMembroDiv);
+        });
+
+        // Continuação das funções anteriores...
+
+    </script>
+
+    <!-- Bootstrap 4 JS and jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
