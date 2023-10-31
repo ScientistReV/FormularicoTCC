@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário de Submissão - TCC IFG</title>
-    <!-- Bootstrap 4 CDN -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://smtpjs.com/v3/smtp.js"></script>  
+    <script src="script.js"></script>
 </head>
 
 <body>
@@ -15,7 +16,6 @@
 
         <form id="tccForm">
 
-            <!-- Identificação da Produção -->
             <h2>IDENTIFICAÇÃO DA PRODUÇÃO TÉCNICO-CIENTÍFICA</h2>
             <div id="identificacoes">
                 <div class="identificacao">
@@ -78,14 +78,12 @@
                 </div>
             </div>
 
-            <!-- Autores -->
             <h2>AUTOR(ES)</h2>
             <div id="autores">
-                <!-- Primeiro Autor -->
                 <div class="autor">
                     <div class="form-group">
                         <label for="primeiroNome1">Primeiro Nome:</label>
-                        <input type="text" class="form-control" id="primeiroNome1" required>
+                        <input type="text" class="form-control js-validate" id="primeiroNome1" required>
                     </div>
 
                     <div class="form-group">
@@ -98,11 +96,9 @@
                         <input type="url" class="form-control" id="lattesUrl1" required>
                     </div>
                 </div>
-                <!-- Espaço para adicionar outros autores -->
             </div>
             <button type="button" id="addAuthorBtn" class="btn btn-primary mb-3">Adicionar Autor</button>
 
-            <!-- Orientador -->
             <h2>ORIENTADOR</h2>
             <div class="form-group">
                 <label for="nomeOrientadorPrimeiro">Primeiro Nome:</label>
@@ -119,7 +115,6 @@
                 <input type="url" class="form-control" id="lattesOrientador" required>
             </div>
 
-            <!-- Co-Orientador -->
             <h2>CO-ORIENTADOR (OPCIONAL)</h2>
             <div id="coorientadores">
                 <div class="coorientador">
@@ -141,12 +136,11 @@
             </div>
             <button type="button" id="addCoorientadorBtn" class="btn btn-primary mb-3">Adicionar co-orientador</button>
 
-            <!-- Membros da Banca -->
             <h2>MEMBROS DA BANCA</h2>
             <div id="bancaMembros">
                 <div class="membro">
                     <div class="form-group">
-                        <label for="nomeMembroPrimeiro">Primeiro Nomer:</label>
+                        <label for="nomeMembroPrimeiro">Primeiro Nome:</label>
                         <input type="text" class="form-control" id="nomeMembroPrimeiro" required>
                     </div>
 
@@ -163,7 +157,6 @@
             </div>
             <button type="button" id="addMembroBtn" class="btn btn-primary mb-3">Adicionar Membro</button>
 
-            <!-- Descrição do Trabalho -->
             <h2>DESCRIÇÃO DO TRABALHO</h2>
             <div class="form-group">
                 <label for="palavrasChave">Palavras-Chave:</label>
@@ -171,66 +164,40 @@
             </div>
 
             <div class="form-group">
+                <label for="areaConhecimento">Áreas de conhecimento de acordo com tabela do CNPq::</label>
+                <textarea class="form-control" id="areaConhecimento" required></textarea>
+            </div>
+
+            <div class="form-group">
                 <label for="resumo">Resumo:</label>
                 <textarea class="form-control" id="resumo" required></textarea>
             </div>
 
-            <!-- Botão de envio -->
+            <div class="form-group">
+                <label for="abstract">Abstract:</label>
+                <textarea class="form-control" id="abstract" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="relacao">Relação:</label>
+                <textarea class="form-control" id="relacao"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="citacao">Citação:</label>
+                <textarea class="form-control" id="citacao" required></textarea>
+            </div>
+
             <input type="submit" class="btn btn-success" value="Enviar">
 
         </form>
 
+        <form method="post">
+            <input type="button" value="Send Email" onclick="sendEmail()"/>
+        </form> 
+
     </div>
 
-    <script>
-        // Função para adicionar novos autores
-        document.getElementById('addAuthorBtn').addEventListener('click', () => {
-            let newAuthorDiv = document.createElement('div');
-            newAuthorDiv.innerHTML = `
-                <div class="autor">
-                    <div class="form-group">
-                        <label>Primeiro Nome:</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Último Nome:</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>URL do Currículo Lattes:</label>
-                        <input type="url" class="form-control" required>
-                    </div>
-                </div>
-            `;
-            document.getElementById('autores').appendChild(newAuthorDiv);
-        });
-
-        // Função para adicionar novos membros da banca
-        document.getElementById('addMembroBtn').addEventListener('click', () => {
-            let newMembroDiv = document.createElement('div');
-            newMembroDiv.innerHTML = `
-                <div class="membro">
-                    <div class="form-group">
-                        <label>Nome do Membro:</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>URL do Currículo Lattes:</label>
-                        <input type="url" class="form-control" required>
-                    </div>
-                </div>
-            `;
-            document.getElementById('bancaMembros').appendChild(newMembroDiv);
-        });
-
-        // Continuação das funções anteriores...
-
-    </script>
-
-    <!-- Bootstrap 4 JS and jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
